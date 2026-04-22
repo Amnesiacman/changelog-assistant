@@ -1,6 +1,6 @@
 import subprocess
 from pathlib import Path
-from typing import Optional
+from typing import Any, Optional
 
 
 def _classify(message: str) -> str:
@@ -13,13 +13,13 @@ def _classify(message: str) -> str:
 
 def collect_commits(
     repo_path: Path, since: Optional[str] = None, until: str = "HEAD"
-) -> list[dict]:
+) -> list[dict[str, str]]:
     range_expr = until
     if since:
         range_expr = f"{since}..{until}"
     cmd = ["git", "-C", str(repo_path), "log", "--pretty=format:%H%x09%s", range_expr]
     out = subprocess.check_output(cmd, text=True)
-    commits = []
+    commits: list[dict[str, str]] = []
     for line in out.splitlines():
         if not line.strip():
             continue
@@ -28,10 +28,13 @@ def collect_commits(
     return commits
 
 
-def build_changelog(repo_path: Path, since: Optional[str] = None, until: str = "HEAD") -> dict:
+def build_changelog(
+    repo_path: Path, since: Optional[str] = None, until: str = "HEAD"
+) -> dict[str, Any]:
     commits = collect_commits(repo_path, since=since, until=until)
-    sections = {
-        k: [] for k in ["feat", "fix", "docs", "refactor", "perf", "test", "chore", "other"]
+    sections: dict[str, list[dict[str, str]]] = {
+        k: []
+        for k in ["feat", "fix", "docs", "refactor", "perf", "test", "chore", "other"]
     }
     for commit in commits:
         sections[commit["type"]].append(commit)
@@ -44,7 +47,7 @@ def build_changelog(repo_path: Path, since: Optional[str] = None, until: str = "
     }
 
 
-def render_text(report: dict) -> str:
+def render_text(report: dict[str, Any]) -> str:
     lines = [
         f"Repo: {report['repo']}",
         f"Range: {report['since'] or '(start)'}..{report['until']}",
