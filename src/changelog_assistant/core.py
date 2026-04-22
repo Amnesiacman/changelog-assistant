@@ -28,9 +28,7 @@ def collect_commits(
     return commits
 
 
-def build_changelog(
-    repo_path: Path, since: Optional[str] = None, until: str = "HEAD"
-) -> dict:
+def build_changelog(repo_path: Path, since: Optional[str] = None, until: str = "HEAD") -> dict:
     commits = collect_commits(repo_path, since=since, until=until)
     sections = {
         k: [] for k in ["feat", "fix", "docs", "refactor", "perf", "test", "chore", "other"]
@@ -61,4 +59,3 @@ def render_text(report: dict) -> str:
             lines.append(f"- {commit['subject']} ({commit['sha'][:7]})")
         lines.append("")
     return "\n".join(lines).rstrip()
-

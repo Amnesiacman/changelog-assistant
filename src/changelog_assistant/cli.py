@@ -30,4 +30,3 @@ def main(argv=None) -> int:
     else:
         print(render_text(report))
     return 0
-

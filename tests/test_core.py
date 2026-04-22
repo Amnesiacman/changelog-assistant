@@ -27,4 +27,3 @@ def test_render_text_minimal():
     text = render_text(report)
     assert "## feat" in text
     assert "feat: add x" in text
-

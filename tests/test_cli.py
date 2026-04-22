@@ -12,4 +12,3 @@ def test_json_output_for_current_repo(capsys):
     payload = json.loads(capsys.readouterr().out.strip())
     assert code == 0
     assert "total_commits" in payload
-
