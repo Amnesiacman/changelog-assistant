@@ -2,16 +2,19 @@
 
 [Русская версия](README.ru.md)
 
-Generate release notes from Conventional Commits and git history.
+Generate release notes from git history and Conventional Commits.
 
-## Quick start
+## Features
+
+- parse `git log`
+- classify commits into sections (`feat`, `fix`, `docs`, `refactor`, `perf`, `test`, `chore`, `other`)
+- revision range support (`--since`, `--until`)
+- text and JSON output
+
+## Usage
 
 ```bash
-# Read CLI help
-# (examples may differ by project)
+python3 main.py generate --path .
+python3 main.py generate --path . --since v0.1.0 --until HEAD
+python3 main.py generate --path . --format json
 ```
-
-## Documentation
-
-- See project files and workflow docs in this repository.
-- For Russian documentation, open `README.ru.md`.

@@ -2,16 +2,19 @@
 
 [English version](README.md)
 
-Генерация release notes из Conventional Commits и истории git.
+Генерация release notes из истории git и Conventional Commits.
 
-## Быстрый старт
+## Возможности
+
+- парсинг `git log`
+- классификация коммитов по секциям (`feat`, `fix`, `docs`, `refactor`, `perf`, `test`, `chore`, `other`)
+- поддержка диапазона ревизий (`--since`, `--until`)
+- текстовый и JSON-вывод
+
+## Использование
 
 ```bash
-# Посмотрите справку CLI
-# (конкретные команды зависят от проекта)
+python3 main.py generate --path .
+python3 main.py generate --path . --since v0.1.0 --until HEAD
+python3 main.py generate --path . --format json
 ```
-
-## Документация
-
-- Детали смотрите в файлах проекта и workflow-конфигурациях в этом репозитории.
-- Для англоязычной документации откройте `README.md`.
