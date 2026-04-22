@@ -33,8 +33,7 @@ def build_changelog(
 ) -> dict[str, Any]:
     commits = collect_commits(repo_path, since=since, until=until)
     sections: dict[str, list[dict[str, str]]] = {
-        k: []
-        for k in ["feat", "fix", "docs", "refactor", "perf", "test", "chore", "other"]
+        k: [] for k in ["feat", "fix", "docs", "refactor", "perf", "test", "chore", "other"]
     }
     for commit in commits:
         sections[commit["type"]].append(commit)
