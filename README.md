@@ -1,25 +1,17 @@
 # changelog-assistant
 
-![CI](https://github.com/Amnesiacman/changelog-assistant/actions/workflows/ci.yml/badge.svg)
+[Русская версия](README.ru.md)
 
-`changelog-assistant` генерирует release notes из Conventional Commits.
+Generate release notes from Conventional Commits and git history.
 
-## Возможности v0.1
-
-- чтение коммитов через `git log`
-- группировка по типам: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `perf`, `other`
-- вывод в `text` и `json`
-- диапазон по ревизиям: `--since`, `--until`
-
-## Использование
+## Quick start
 
 ```bash
-python3 -m pip install -e .
-changelog-assistant generate --path . --since v0.1.0 --until HEAD
+# Read CLI help
+# (examples may differ by project)
 ```
 
-JSON-режим:
+## Documentation
 
-```bash
-changelog-assistant generate --path . --format json
-```
+- See project files and workflow docs in this repository.
+- For Russian documentation, open `README.ru.md`.
