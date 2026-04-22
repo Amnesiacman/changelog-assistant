@@ -1,22 +1,23 @@
 # changelog-assistant
 
-Generate release notes from Conventional Commits and PR metadata.
+`changelog-assistant` генерирует release notes из Conventional Commits.
 
-## MVP status
+## Возможности v0.1
 
-- Basic CLI scaffold is ready (`main.py`).
-- Supports `--format text|json` and `--dry-run`.
-- Intended as a foundation for iterative feature work.
+- чтение коммитов через `git log`
+- группировка по типам: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `perf`, `other`
+- вывод в `text` и `json`
+- диапазон по ревизиям: `--since`, `--until`
 
-## Quick start
+## Использование
 
 ```bash
-python3 main.py --help
-python3 main.py --format json --dry-run
+python3 -m pip install -e .
+changelog-assistant generate --path . --since v0.1.0 --until HEAD
 ```
 
-## Next steps
+JSON-режим:
 
-1. Add domain-specific command set and config file support.
-2. Add tests and GitHub Actions workflow.
-3. Package and publish first tagged release.
+```bash
+changelog-assistant generate --path . --format json
+```

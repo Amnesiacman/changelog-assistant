@@ -2,7 +2,21 @@
 name = "changelog-assistant"
 version = "0.1.0"
 requires-python = ">=3.10"
+description = "Generate release notes from conventional commits"
+
+[project.scripts]
+changelog-assistant = "changelog_assistant.cli:main"
 
 [build-system]
 requires = ["setuptools>=69", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+addopts = "-q"
