@@ -1,5 +1,7 @@
 # changelog-assistant
 
+![CI](https://github.com/Amnesiacman/changelog-assistant/actions/workflows/ci.yml/badge.svg)
+
 `changelog-assistant` генерирует release notes из Conventional Commits.
 
 ## Возможности v0.1
